@@ -80,6 +80,21 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Suppress Netlify Drawer & Badge Widget */
+[data-netlify-drawer],
+#netlify-drawer,
+.netlify-badge,
+iframe[src*="netlify"],
+div[class*="netlify-drawer"],
+button[class*="netlify-drawer"] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
 html, body {
   width: 100%;
   height: 100%;
