@@ -1,4 +1,4 @@
-const CACHE_NAME = 'saurabhs-sprint-v11';
+const CACHE_NAME = 'saurabhs-sprint-v12';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

@@ -829,29 +829,78 @@ canvas {
    =================================================== */
 
 .modal-layer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 25;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(8px);
-  padding: 16px;
-  transition: all 0.3s;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal-content {
   width: 100%;
-  max-width: 460px;
-  max-height: 85vh;
+  max-width: 480px;
+  max-height: 88vh;
+  max-height: 88dvh;
   display: flex;
   flex-direction: column;
-  padding: 22px;
+  padding: 20px 18px;
+  border-radius: 26px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-body-scroll {
+  flex: 1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-right: 4px;
+  padding-bottom: 12px;
+  margin-top: 4px;
+}
+
+.modal-title-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.modal-subtitle {
+  font-size: 10px;
+  font-weight: 800;
+  color: #0284c7;
+  letter-spacing: 0.5px;
+}
+
+.modal-footer {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-modal-action {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(255, 71, 87, 0.35);
+}
+
+.btn-modal-action .btn-text {
+  font-size: 15px;
+  letter-spacing: 0.5px;
 }
 
 .modal-header {
@@ -1269,18 +1318,39 @@ canvas {
   color: #0284c7;
 }
 
-/* Help Modal Guide */
+/* Help & Rules Modal Guide */
 .help-guide {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+}
+
+.help-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.rules-card-highlight {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border-color: #fde68a;
+}
+
+.rules-card-highlight h3 {
+  color: #b45309 !important;
 }
 
 .help-section h3 {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 800;
   color: #0284c7;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .help-section ul {
@@ -1292,17 +1362,17 @@ canvas {
 
 .help-section li {
   font-size: 12px;
-  line-height: 1.4;
-  color: var(--text-muted);
+  line-height: 1.45;
+  color: #475569;
 }
 
 .help-section strong {
-  color: var(--text-main);
+  color: #0f172a;
 }
 
 /* Pause Panel */
 .pause-panel {
-  gap: 16px;
+  gap: 14px;
 }
 
 .pause-panel h2 {
@@ -1318,6 +1388,160 @@ canvas {
 
 .pause-stats strong {
   color: var(--text-main);
+}
+
+.btn-pause-setting {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 10px 18px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: #0f172a;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s;
+}
+
+.btn-pause-setting:active {
+  background: #e2e8f0;
+  transform: scale(0.96);
+}
+
+/* ===================================================
+   SETTINGS MODAL & INTERACTIVE SWITCHES
+   =================================================== */
+
+.settings-modal-content {
+  max-width: 480px;
+}
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.setting-item-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.offline-status-card {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.setting-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.setting-icon-badge {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.badge-green {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.setting-info h4 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.setting-info p {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.status-pill-active {
+  background: #10b981;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Toggle Switch UI Component */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 30px;
+  min-width: 52px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: #10b981;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #10b981;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
 }
 
 /* ===================================================
@@ -1637,47 +1861,35 @@ kbd {
   }
 }
 
-/* --- Small Mobile Phones (< 380px) --- */
-@media (max-width: 380px) {
+/* --- Small & Standard Mobile Phones (< 480px) & Height Constrained Screens --- */
+@media (max-width: 480px) {
+  .start-screen-layout {
+    padding: env(safe-area-inset-top, 10px) 10px env(safe-area-inset-bottom, 10px) 10px;
+    gap: 6px;
+  }
+
   .start-top-bar {
-    padding: 8px 10px;
-  }
-
-  .game-logo-compact {
-    font-size: 14px;
-  }
-
-  .btn-header-install {
-    padding: 3px 6px;
-    font-size: 10px;
-  }
-
-  .stat-pill {
-    padding: 3px 6px;
-    font-size: 11px;
+    padding: 8px 12px;
   }
 
   .home-character-widget {
-    padding: 6px 10px;
-    max-width: 290px;
+    padding: 6px 12px;
+    margin-top: auto;
+    margin-bottom: 8px;
+    max-width: 320px;
   }
 
-  .btn-char-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-  }
-
-  .home-char-title {
-    font-size: 15px;
+  .start-bottom-bar {
+    padding: 12px 10px;
+    gap: 8px;
   }
 
   .btn-primary-action {
-    padding: 12px 14px;
+    padding: 13px 16px;
   }
 
   .btn-primary-action .btn-text {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .btn-primary-action .btn-sub {
@@ -1686,11 +1898,12 @@ kbd {
 
   .menu-actions-grid {
     grid-template-columns: repeat(6, 1fr);
-    gap: 3px;
+    gap: 4px;
   }
 
-  .action-icon {
-    font-size: 14px;
+  .btn-action-icon {
+    padding: 8px 2px;
+    min-height: 48px;
   }
 
   .action-text-main {
@@ -1698,11 +1911,111 @@ kbd {
   }
 
   .action-text {
-    font-size: 7px;
+    font-size: 7.5px;
   }
 
   .skins-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .modal-content {
+    max-height: 90vh;
+    max-height: 90dvh;
+    padding: 16px 14px;
+    border-radius: 22px;
+  }
+}
+
+/* --- Short Mobile Screens (Height <= 750px e.g. iPhone SE, landscape or with browser bars) --- */
+@media (max-height: 750px) {
+  .start-screen-layout {
+    padding: env(safe-area-inset-top, 6px) 8px env(safe-area-inset-bottom, 6px) 8px;
+  }
+
+  .start-top-bar {
+    padding: 6px 10px;
+    margin-bottom: 2px;
+  }
+
+  .game-logo-compact {
+    font-size: 15px;
+  }
+
+  .stat-pill {
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  .home-character-widget {
+    padding: 4px 10px;
+    margin-top: auto;
+    margin-bottom: 4px;
+    max-width: 290px;
+  }
+
+  .home-char-title {
+    font-size: 14px;
+  }
+
+  .btn-char-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .start-bottom-bar {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .btn-primary-action {
+    padding: 10px 14px;
+  }
+
+  .btn-primary-action .btn-text {
+    font-size: 15px;
+  }
+
+  .btn-primary-action .btn-sub {
+    font-size: 9px;
+  }
+
+  .menu-actions-grid {
+    gap: 3px;
+  }
+
+  .btn-action-icon {
+    padding: 6px 1px;
+    min-height: 42px;
+  }
+
+  .action-text-main {
+    font-size: 9.5px;
+  }
+
+  .action-text {
+    font-size: 7px;
+  }
+
+  .pwa-banner {
+    padding: 6px 10px;
+    margin-top: 2px;
+  }
+
+  .modal-content {
+    max-height: 94vh;
+    max-height: 94dvh;
+    padding: 12px 10px;
+  }
+
+  .modal-header {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  .modal-header h2 {
+    font-size: 16px;
   }
 }
 

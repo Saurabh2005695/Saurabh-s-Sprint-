@@ -18,6 +18,7 @@ class UIManager {
     this.skinsModal = document.getElementById('skins-modal');
     this.missionsModal = document.getElementById('missions-modal');
     this.helpModal = document.getElementById('help-modal');
+    this.settingsModal = document.getElementById('settings-modal');
     this.installModal = document.getElementById('install-modal');
 
     // HUD Stats
@@ -45,8 +46,8 @@ class UIManager {
     this.pwaBanner = document.getElementById('pwa-install-container');
     this.btnInstallPwa = document.getElementById('btn-install-pwa');
 
-    // Character Switcher State
-    this.characterKeys = ['saurabh', 'rishav', 'jaishika', 'kashish', 'bhoomi', 'muskaan', 'nikhil', 'vicky', 'aditya'];
+    // Character Switcher State (8 unique heroes)
+    this.characterKeys = ['saurabh', 'rishav', 'kashish', 'jaishika', 'vicky', 'bhoomi', 'nikhil', 'aditya'];
     const currentSkin = Storage.getSelectedSkin();
     this.currentCharIndex = Math.max(0, this.characterKeys.indexOf(currentSkin));
 
@@ -58,13 +59,35 @@ class UIManager {
   }
 
   initSoundUI() {
-    const enabled = Storage.isSoundEnabled();
+    const soundEnabled = Storage.isSoundEnabled();
+    const bgmEnabled = Storage.isBgmEnabled();
+    const sfxEnabled = Storage.isSfxEnabled();
+
+    // Menu sound button text
     const soundIcon = document.getElementById('sound-icon');
     const soundText = document.getElementById('sound-text');
     if (soundIcon && soundText) {
-      soundIcon.textContent = enabled ? 'ON' : 'OFF';
-      soundText.textContent = enabled ? 'SOUND ON' : 'MUTED';
+      soundIcon.textContent = soundEnabled ? 'SETTINGS' : 'MUTED';
+      soundText.textContent = soundEnabled ? 'SOUND ON' : 'MUTED';
     }
+
+    // Pause menu sound button
+    const pauseIcon = document.getElementById('pause-sound-icon');
+    const pauseText = document.getElementById('pause-sound-text');
+    if (pauseIcon && pauseText) {
+      pauseIcon.textContent = soundEnabled ? '🔊' : '🔇';
+      pauseText.textContent = soundEnabled ? 'SOUND: ON' : 'SOUND: MUTED';
+    }
+
+    // Settings switches
+    const soundToggle = document.getElementById('setting-sound-toggle');
+    if (soundToggle) soundToggle.checked = soundEnabled;
+
+    const bgmToggle = document.getElementById('setting-bgm-toggle');
+    if (bgmToggle) bgmToggle.checked = bgmEnabled;
+
+    const sfxToggle = document.getElementById('setting-sfx-toggle');
+    if (sfxToggle) sfxToggle.checked = sfxEnabled;
   }
 
   updateHomeCharacterCard() {
@@ -233,15 +256,56 @@ class UIManager {
       });
     }
 
-    // Sound Toggle
+    // Open Settings Modal
+    const btnOpenSettings = document.getElementById('btn-open-settings');
+    if (btnOpenSettings) {
+      btnOpenSettings.addEventListener('click', () => {
+        Audio.playButtonClick();
+        this.initSoundUI();
+        this.showModal(this.settingsModal);
+      });
+    }
+
+    // Quick Sound Toggle (if legacy button exists)
     const btnSound = document.getElementById('btn-toggle-sound');
-    const soundIcon = document.getElementById('sound-icon');
-    const soundText = document.getElementById('sound-text');
     if (btnSound) {
       btnSound.addEventListener('click', () => {
-        const enabled = Audio.toggleSound();
-        soundIcon.textContent = enabled ? '🔊' : '🔇';
-        soundText.textContent = enabled ? 'SOUND ON' : 'MUTED';
+        Audio.toggleSound();
+        this.initSoundUI();
+      });
+    }
+
+    // Pause Menu Sound Toggle Button
+    const btnPauseSound = document.getElementById('btn-pause-sound');
+    if (btnPauseSound) {
+      btnPauseSound.addEventListener('click', () => {
+        Audio.toggleSound();
+        this.initSoundUI();
+      });
+    }
+
+    // Settings Modal Switches
+    const settingSoundToggle = document.getElementById('setting-sound-toggle');
+    if (settingSoundToggle) {
+      settingSoundToggle.addEventListener('change', (e) => {
+        Audio.setSoundEnabled(e.target.checked);
+        this.initSoundUI();
+      });
+    }
+
+    const settingBgmToggle = document.getElementById('setting-bgm-toggle');
+    if (settingBgmToggle) {
+      settingBgmToggle.addEventListener('change', () => {
+        Audio.toggleBGM();
+        this.initSoundUI();
+      });
+    }
+
+    const settingSfxToggle = document.getElementById('setting-sfx-toggle');
+    if (settingSfxToggle) {
+      settingSfxToggle.addEventListener('change', () => {
+        Audio.toggleSFX();
+        this.initSoundUI();
       });
     }
 
@@ -250,6 +314,9 @@ class UIManager {
     document.getElementById('btn-close-skins')?.addEventListener('click', () => this.hideModal(this.skinsModal));
     document.getElementById('btn-close-missions')?.addEventListener('click', () => this.hideModal(this.missionsModal));
     document.getElementById('btn-close-help')?.addEventListener('click', () => this.hideModal(this.helpModal));
+    document.getElementById('btn-close-help-bottom')?.addEventListener('click', () => this.hideModal(this.helpModal));
+    document.getElementById('btn-close-settings')?.addEventListener('click', () => this.hideModal(this.settingsModal));
+    document.getElementById('btn-close-settings-bottom')?.addEventListener('click', () => this.hideModal(this.settingsModal));
     document.getElementById('btn-close-install')?.addEventListener('click', () => this.hideModal(this.installModal));
 
     // Install Modal Platform Tabs

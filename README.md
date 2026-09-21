@@ -56,14 +56,13 @@ https://lucent-lollipop-71a903.netlify.app/
 | Character | Role / Style | Gender | Unlock Cost |
 | :--- | :--- | :--- | :--- |
 | Saurabh | Leader (Default) | Male | Free |
-| Rishav | Striker | Male | 400 Coins |
-| Jaishika | Superstar | Female | 500 Coins |
-| Kashish | Phantom | Male | 600 Coins |
-| Bhoomi | Emerald | Female | 700 Coins |
-| Muskaan | Blossom | Female | 800 Coins |
-| Nikhil | Cyber Ace | Male | 900 Coins |
-| Vicky | Blaze | Male | 1000 Coins |
-| Aditya | Champion | Male | 1200 Coins |
+| Rishav | Striker | Male | 250 Coins |
+| Kashish | Phantom | Male | 450 Coins |
+| Jaishika | Superstar | Female | 600 Coins |
+| Vicky | Blaze | Male | 750 Coins |
+| Bhoomi | Emerald | Female | 850 Coins |
+| Nikhil | Cyber Ace | Male | 1350 Coins |
+| Aditya | Champion | Male | 2000 Coins |
 
 ---
 

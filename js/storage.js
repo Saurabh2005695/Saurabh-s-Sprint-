@@ -63,6 +63,24 @@ const Storage = {
     localStorage.setItem(this.KEYS.SOUND_ENABLED, enabled.toString());
   },
 
+  isBgmEnabled() {
+    const val = localStorage.getItem('ss_bgm_enabled');
+    return val === null ? true : val === 'true';
+  },
+
+  setBgmEnabled(enabled) {
+    localStorage.setItem('ss_bgm_enabled', enabled.toString());
+  },
+
+  isSfxEnabled() {
+    const val = localStorage.getItem('ss_sfx_enabled');
+    return val === null ? true : val === 'true';
+  },
+
+  setSfxEnabled(enabled) {
+    localStorage.setItem('ss_sfx_enabled', enabled.toString());
+  },
+
   getUpgradeLevel(type) {
     const key = this.KEYS['UPGRADE_' + type.toUpperCase()];
     return parseInt(localStorage.getItem(key) || '1', 10);
@@ -98,11 +116,12 @@ const Storage = {
 
   getSelectedSkin() {
     let skin = localStorage.getItem(this.KEYS.SELECTED_SKIN) || 'saurabh';
-    if (skin === 'default') skin = 'saurabh';
+    if (skin === 'default' || skin === 'muskaan') skin = 'saurabh';
     return skin;
   },
 
   setSelectedSkin(skinId) {
+    if (skinId === 'muskaan') skinId = 'saurabh';
     localStorage.setItem(this.KEYS.SELECTED_SKIN, skinId);
   },
 
@@ -110,6 +129,7 @@ const Storage = {
     try {
       const raw = localStorage.getItem(this.KEYS.UNLOCKED_SKINS);
       let list = raw ? JSON.parse(raw) : ['saurabh'];
+      list = list.filter(s => s !== 'muskaan');
       if (!list.includes('saurabh')) list.push('saurabh');
       return list;
     } catch (e) {

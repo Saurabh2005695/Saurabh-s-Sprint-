@@ -872,29 +872,78 @@ canvas {
    =================================================== */
 
 .modal-layer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 25;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(8px);
-  padding: 16px;
-  transition: all 0.3s;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 12px;
+  box-sizing: border-box;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .modal-content {
   width: 100%;
-  max-width: 460px;
-  max-height: 85vh;
+  max-width: 480px;
+  max-height: 88vh;
+  max-height: 88dvh;
   display: flex;
   flex-direction: column;
-  padding: 22px;
+  padding: 20px 18px;
+  border-radius: 26px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-body-scroll {
+  flex: 1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-right: 4px;
+  padding-bottom: 12px;
+  margin-top: 4px;
+}
+
+.modal-title-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.modal-subtitle {
+  font-size: 10px;
+  font-weight: 800;
+  color: #0284c7;
+  letter-spacing: 0.5px;
+}
+
+.modal-footer {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-modal-action {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(255, 71, 87, 0.35);
+}
+
+.btn-modal-action .btn-text {
+  font-size: 15px;
+  letter-spacing: 0.5px;
 }
 
 .modal-header {
@@ -1312,18 +1361,39 @@ canvas {
   color: #0284c7;
 }
 
-/* Help Modal Guide */
+/* Help & Rules Modal Guide */
 .help-guide {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+}
+
+.help-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.rules-card-highlight {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border-color: #fde68a;
+}
+
+.rules-card-highlight h3 {
+  color: #b45309 !important;
 }
 
 .help-section h3 {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 800;
   color: #0284c7;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .help-section ul {
@@ -1335,17 +1405,17 @@ canvas {
 
 .help-section li {
   font-size: 12px;
-  line-height: 1.4;
-  color: var(--text-muted);
+  line-height: 1.45;
+  color: #475569;
 }
 
 .help-section strong {
-  color: var(--text-main);
+  color: #0f172a;
 }
 
 /* Pause Panel */
 .pause-panel {
-  gap: 16px;
+  gap: 14px;
 }
 
 .pause-panel h2 {
@@ -1361,6 +1431,160 @@ canvas {
 
 .pause-stats strong {
   color: var(--text-main);
+}
+
+.btn-pause-setting {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 10px 18px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: #0f172a;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  transition: all 0.2s;
+}
+
+.btn-pause-setting:active {
+  background: #e2e8f0;
+  transform: scale(0.96);
+}
+
+/* ===================================================
+   SETTINGS MODAL & INTERACTIVE SWITCHES
+   =================================================== */
+
+.settings-modal-content {
+  max-width: 480px;
+}
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.setting-item-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.offline-status-card {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.setting-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.setting-icon-badge {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.badge-green {
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.setting-info h4 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.setting-info p {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.status-pill-active {
+  background: #10b981;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 10px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Toggle Switch UI Component */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 30px;
+  min-width: 52px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: #10b981;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #10b981;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
 }
 
 /* ===================================================
@@ -1680,47 +1904,35 @@ kbd {
   }
 }
 
-/* --- Small Mobile Phones (< 380px) --- */
-@media (max-width: 380px) {
+/* --- Small & Standard Mobile Phones (< 480px) & Height Constrained Screens --- */
+@media (max-width: 480px) {
+  .start-screen-layout {
+    padding: env(safe-area-inset-top, 10px) 10px env(safe-area-inset-bottom, 10px) 10px;
+    gap: 6px;
+  }
+
   .start-top-bar {
-    padding: 8px 10px;
-  }
-
-  .game-logo-compact {
-    font-size: 14px;
-  }
-
-  .btn-header-install {
-    padding: 3px 6px;
-    font-size: 10px;
-  }
-
-  .stat-pill {
-    padding: 3px 6px;
-    font-size: 11px;
+    padding: 8px 12px;
   }
 
   .home-character-widget {
-    padding: 6px 10px;
-    max-width: 290px;
+    padding: 6px 12px;
+    margin-top: auto;
+    margin-bottom: 8px;
+    max-width: 320px;
   }
 
-  .btn-char-arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-  }
-
-  .home-char-title {
-    font-size: 15px;
+  .start-bottom-bar {
+    padding: 12px 10px;
+    gap: 8px;
   }
 
   .btn-primary-action {
-    padding: 12px 14px;
+    padding: 13px 16px;
   }
 
   .btn-primary-action .btn-text {
-    font-size: 15px;
+    font-size: 17px;
   }
 
   .btn-primary-action .btn-sub {
@@ -1729,11 +1941,12 @@ kbd {
 
   .menu-actions-grid {
     grid-template-columns: repeat(6, 1fr);
-    gap: 3px;
+    gap: 4px;
   }
 
-  .action-icon {
-    font-size: 14px;
+  .btn-action-icon {
+    padding: 8px 2px;
+    min-height: 48px;
   }
 
   .action-text-main {
@@ -1741,11 +1954,111 @@ kbd {
   }
 
   .action-text {
-    font-size: 7px;
+    font-size: 7.5px;
   }
 
   .skins-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .modal-content {
+    max-height: 90vh;
+    max-height: 90dvh;
+    padding: 16px 14px;
+    border-radius: 22px;
+  }
+}
+
+/* --- Short Mobile Screens (Height <= 750px e.g. iPhone SE, landscape or with browser bars) --- */
+@media (max-height: 750px) {
+  .start-screen-layout {
+    padding: env(safe-area-inset-top, 6px) 8px env(safe-area-inset-bottom, 6px) 8px;
+  }
+
+  .start-top-bar {
+    padding: 6px 10px;
+    margin-bottom: 2px;
+  }
+
+  .game-logo-compact {
+    font-size: 15px;
+  }
+
+  .stat-pill {
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  .home-character-widget {
+    padding: 4px 10px;
+    margin-top: auto;
+    margin-bottom: 4px;
+    max-width: 290px;
+  }
+
+  .home-char-title {
+    font-size: 14px;
+  }
+
+  .btn-char-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .start-bottom-bar {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .btn-primary-action {
+    padding: 10px 14px;
+  }
+
+  .btn-primary-action .btn-text {
+    font-size: 15px;
+  }
+
+  .btn-primary-action .btn-sub {
+    font-size: 9px;
+  }
+
+  .menu-actions-grid {
+    gap: 3px;
+  }
+
+  .btn-action-icon {
+    padding: 6px 1px;
+    min-height: 42px;
+  }
+
+  .action-text-main {
+    font-size: 9.5px;
+  }
+
+  .action-text {
+    font-size: 7px;
+  }
+
+  .pwa-banner {
+    padding: 6px 10px;
+    margin-top: 2px;
+  }
+
+  .modal-content {
+    max-height: 94vh;
+    max-height: 94dvh;
+    padding: 12px 10px;
+  }
+
+  .modal-header {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+  }
+
+  .modal-header h2 {
+    font-size: 16px;
   }
 }
 
@@ -1884,11 +2197,11 @@ kbd {
           <span class="action-text">GET APP</span>
         </button>
         <button id="btn-open-help" class="btn-action-icon">
-          <span class="action-text-main">INFO</span>
+          <span class="action-text-main">RULES</span>
           <span class="action-text">CONTROLS</span>
         </button>
-        <button id="btn-toggle-sound" class="btn-action-icon">
-          <span id="sound-icon" class="action-text-main">AUDIO</span>
+        <button id="btn-open-settings" class="btn-action-icon">
+          <span id="sound-icon" class="action-text-main">SETTINGS</span>
           <span id="sound-text" class="action-text">SOUND ON</span>
         </button>
       </div>
@@ -1956,6 +2269,10 @@ kbd {
         <p>Current Score: <strong id="pause-score">0</strong></p>
         <p>Coins: <strong id="pause-coins">0</strong></p>
       </div>
+      <button id="btn-pause-sound" class="btn-pause-setting">
+        <span id="pause-sound-icon">🔊</span>
+        <span id="pause-sound-text">SOUND: ON</span>
+      </button>
       <button id="btn-resume" class="btn-primary-action">RESUME SPRINT</button>
       <button id="btn-quit-to-menu" class="btn-secondary">QUIT TO MENU</button>
     </div>
@@ -2064,82 +2381,72 @@ kbd {
         </div>
 
         <!-- 2. Rishav -->
-        <div class="skin-card" data-skin-id="rishav" data-gender="male" data-cost="400">
+        <div class="skin-card" data-skin-id="rishav" data-gender="male" data-cost="250">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #ffd32a, #ffa502);">R</div>
           <div class="skin-details">
             <h4>Rishav</h4>
-            <button class="btn-skin-action">400 C</button>
+            <button class="btn-skin-action">250 C</button>
           </div>
         </div>
 
-        <!-- 3. Jaishika -->
-        <div class="skin-card" data-skin-id="jaishika" data-gender="female" data-cost="500">
-          <span class="gender-tag gender-girl">GIRL</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #ff4081, #f48fb1);">J</div>
-          <div class="skin-details">
-            <h4>Jaishika</h4>
-            <button class="btn-skin-action">500 C</button>
-          </div>
-        </div>
-
-        <!-- 4. Kashish -->
-        <div class="skin-card" data-skin-id="kashish" data-gender="male" data-cost="600">
+        <!-- 3. Kashish -->
+        <div class="skin-card" data-skin-id="kashish" data-gender="male" data-cost="450">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">K</div>
           <div class="skin-details">
             <h4>Kashish</h4>
+            <button class="btn-skin-action">450 C</button>
+          </div>
+        </div>
+
+        <!-- 4. Jaishika -->
+        <div class="skin-card" data-skin-id="jaishika" data-gender="female" data-cost="600">
+          <span class="gender-tag gender-girl">GIRL</span>
+          <div class="skin-preview-box" style="background: linear-gradient(135deg, #ff4081, #f48fb1);">J</div>
+          <div class="skin-details">
+            <h4>Jaishika</h4>
             <button class="btn-skin-action">600 C</button>
           </div>
         </div>
 
-        <!-- 5. Bhoomi -->
-        <div class="skin-card" data-skin-id="bhoomi" data-gender="female" data-cost="700">
-          <span class="gender-tag gender-girl">GIRL</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #00b894, #55efc4);">B</div>
-          <div class="skin-details">
-            <h4>Bhoomi</h4>
-            <button class="btn-skin-action">700 C</button>
-          </div>
-        </div>
-
-        <!-- 6. Muskaan -->
-        <div class="skin-card" data-skin-id="muskaan" data-gender="female" data-cost="800">
-          <span class="gender-tag gender-girl">GIRL</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #ff7675, #fab1a0);">M</div>
-          <div class="skin-details">
-            <h4>Muskaan</h4>
-            <button class="btn-skin-action">800 C</button>
-          </div>
-        </div>
-
-        <!-- 7. Nikhil -->
-        <div class="skin-card" data-skin-id="nikhil" data-gender="male" data-cost="900">
-          <span class="gender-tag gender-boy">BOY</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #0984e3, #74b9ff);">N</div>
-          <div class="skin-details">
-            <h4>Nikhil</h4>
-            <button class="btn-skin-action">900 C</button>
-          </div>
-        </div>
-
-        <!-- 8. Vicky -->
-        <div class="skin-card" data-skin-id="vicky" data-gender="male" data-cost="1000">
+        <!-- 5. Vicky -->
+        <div class="skin-card" data-skin-id="vicky" data-gender="male" data-cost="750">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #d63031, #e17055);">V</div>
           <div class="skin-details">
             <h4>Vicky</h4>
-            <button class="btn-skin-action">1000 C</button>
+            <button class="btn-skin-action">750 C</button>
           </div>
         </div>
 
-        <!-- 9. Aditya -->
-        <div class="skin-card" data-skin-id="aditya" data-gender="male" data-cost="1200">
+        <!-- 6. Bhoomi -->
+        <div class="skin-card" data-skin-id="bhoomi" data-gender="female" data-cost="850">
+          <span class="gender-tag gender-girl">GIRL</span>
+          <div class="skin-preview-box" style="background: linear-gradient(135deg, #00b894, #55efc4);">B</div>
+          <div class="skin-details">
+            <h4>Bhoomi</h4>
+            <button class="btn-skin-action">850 C</button>
+          </div>
+        </div>
+
+        <!-- 7. Nikhil -->
+        <div class="skin-card" data-skin-id="nikhil" data-gender="male" data-cost="1350">
+          <span class="gender-tag gender-boy">BOY</span>
+          <div class="skin-preview-box" style="background: linear-gradient(135deg, #0984e3, #74b9ff);">N</div>
+          <div class="skin-details">
+            <h4>Nikhil</h4>
+            <button class="btn-skin-action">1350 C</button>
+          </div>
+        </div>
+
+        <!-- 8. Aditya -->
+        <div class="skin-card" data-skin-id="aditya" data-gender="male" data-cost="2000">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #6c5ce7, #ffd32a);">A</div>
           <div class="skin-details">
             <h4>Aditya</h4>
-            <button class="btn-skin-action">1200 C</button>
+            <button class="btn-skin-action">2000 C</button>
           </div>
         </div>
       </div>
@@ -2180,43 +2487,69 @@ kbd {
     </div>
   </div>
 
-  <!-- How to Play / Controls Modal -->
+  <!-- How to Play / Controls & Rules Modal -->
   <div id="help-modal" class="modal-layer menu-hidden">
-    <div class="modal-content glass-panel">
+    <div class="modal-content help-modal-content glass-panel">
       <div class="modal-header">
-        <h2>CONTROLS & RULES</h2>
-        <button id="btn-close-help" class="btn-close-modal">&times;</button>
+        <div class="modal-title-group">
+          <h2>GAME RULES & CONTROLS</h2>
+          <span class="modal-subtitle">HOW TO PLAY & WIN</span>
+        </div>
+        <button id="btn-close-help" class="btn-close-modal" aria-label="Close Rules">&times;</button>
       </div>
-      <div class="help-guide">
-        <div class="help-section">
-          <h3>Mobile Touch Controls</h3>
-          <ul>
-            <li><strong>SWIPE LEFT / RIGHT:</strong> Switch between the 3 railway tracks</li>
-            <li><strong>SWIPE UP:</strong> Jump over roadblocks, hurdles & low barriers</li>
-            <li><strong>SWIPE DOWN:</strong> Slide under high girders & fast-fall mid-air</li>
-            <li><strong>DOUBLE TAP:</strong> Activate Hoverboard shield (Crash protection)</li>
-          </ul>
+
+      <div class="modal-body-scroll">
+        <div class="help-guide">
+          <!-- Section 1: Core Rules -->
+          <div class="help-section rules-card-highlight">
+            <h3>🎯 3 Golden Rules</h3>
+            <ul class="rules-list">
+              <li><strong>1. Dodge & Survive:</strong> Avoid oncoming metro trains, construction barriers & overhead girders. Speed increases the further you sprint!</li>
+              <li><strong>2. Collect Gold Coins:</strong> Run through coin lines to unlock awesome new characters and upgrade your power-up durations.</li>
+              <li><strong>3. Complete Missions:</strong> Finish daily challenges to earn bonus coin chests and reach top high-score ranks!</li>
+            </ul>
+          </div>
+
+          <!-- Section 2: Mobile Controls -->
+          <div class="help-section">
+            <h3>📱 Mobile Touch Gestures</h3>
+            <ul>
+              <li><strong>SWIPE LEFT / RIGHT:</strong> Switch between the 3 railway tracks</li>
+              <li><strong>SWIPE UP:</strong> Jump over hurdles, barriers & roadblocks</li>
+              <li><strong>SWIPE DOWN:</strong> Slide under high warning signs & rapid drop</li>
+              <li><strong>DOUBLE TAP:</strong> Deploy Hoverboard Shield (Protects against 1 crash!)</li>
+            </ul>
+          </div>
+
+          <!-- Section 3: Desktop Controls -->
+          <div class="help-section">
+            <h3>⌨️ Desktop Keyboard</h3>
+            <ul>
+              <li><strong>Left / Right / A / D:</strong> Switch Track</li>
+              <li><strong>Up / W:</strong> Jump</li>
+              <li><strong>Down / S:</strong> Slide & Fast-Fall</li>
+              <li><strong>Space / B / E / H:</strong> Activate Hoverboard</li>
+              <li><strong>P / Esc:</strong> Pause & Resume</li>
+            </ul>
+          </div>
+
+          <!-- Section 4: Power-Ups -->
+          <div class="help-section">
+            <h3>⚡ Super Power-Ups</h3>
+            <ul>
+              <li><strong>🧲 Coin Magnet:</strong> Pulls all nearby track coins into your bank automatically.</li>
+              <li><strong>✖️ 2X Multiplier:</strong> Doubles your score rate while active.</li>
+              <li><strong>🛹 Hoverboard:</strong> Grants an emergency energy shield that saves you from 1 crash.</li>
+              <li><strong>🚀 Jetpack:</strong> Rockets high into the open sky for risk-free coin collection.</li>
+            </ul>
+          </div>
         </div>
-        <div class="help-section">
-          <h3>Desktop Keyboard Controls</h3>
-          <ul>
-            <li><strong>Arrow Left / A:</strong> Move Left</li>
-            <li><strong>Arrow Right / D:</strong> Move Right</li>
-            <li><strong>Arrow Up / W:</strong> Jump</li>
-            <li><strong>Arrow Down / S:</strong> Slide & Duck</li>
-            <li><strong>Space / B / E / H:</strong> Activate Hoverboard Shield</li>
-            <li><strong>P / Esc:</strong> Pause & Resume Game</li>
-          </ul>
-        </div>
-        <div class="help-section">
-          <h3>Power-Ups</h3>
-          <ul>
-            <li><strong>Coin Magnet:</strong> Attracts all coins into your bank</li>
-            <li><strong>2X Multiplier:</strong> Doubles your score rate</li>
-            <li><strong>Hoverboard:</strong> Protects from 1 fatal crash</li>
-            <li><strong>Jetpack:</strong> Soar high above obstacles with free sky coins</li>
-          </ul>
-        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-close-help-bottom" class="btn-primary-action btn-modal-action">
+          <span class="btn-text">GOT IT, LET'S PLAY!</span>
+        </button>
       </div>
     </div>
   </div>
@@ -2332,6 +2665,87 @@ kbd {
       </div>
     </div>
   </div>
+
+  <!-- Settings & Audio Controls Modal -->
+  <div id="settings-modal" class="modal-layer menu-hidden">
+    <div class="modal-content settings-modal-content glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2>GAME SETTINGS</h2>
+          <span class="modal-subtitle">AUDIO & CONTROLS</span>
+        </div>
+        <button id="btn-close-settings" class="btn-close-modal" aria-label="Close Settings">&times;</button>
+      </div>
+
+      <div class="modal-body-scroll">
+        <div class="settings-list">
+          <!-- Sound Master Setting Row -->
+          <div class="setting-item-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge">🔊</div>
+              <div>
+                <h4>Master Sound</h4>
+                <p>Toggle all game sound effects and music</p>
+              </div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setting-sound-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- BGM Setting Row -->
+          <div class="setting-item-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge">🎵</div>
+              <div>
+                <h4>Synthwave BGM</h4>
+                <p>Procedural upbeat arcade background music</p>
+              </div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setting-bgm-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- SFX Setting Row -->
+          <div class="setting-item-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge">💥</div>
+              <div>
+                <h4>Sound Effects (SFX)</h4>
+                <p>Jumps, slides, coin chimes & power-ups</p>
+              </div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setting-sfx-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- Offline Mode Guarantee Badge -->
+          <div class="setting-item-card offline-status-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge badge-green">📶</div>
+              <div>
+                <h4>100% Offline Mode</h4>
+                <p>Zero internet required. Audio is synthesized live on your device!</p>
+              </div>
+            </div>
+            <span class="status-pill-active">READY ✔</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-close-settings-bottom" class="btn-primary-action btn-modal-action">
+          <span class="btn-text">SAVE & CLOSE</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator) {
@@ -2410,6 +2824,24 @@ const Storage = {
     localStorage.setItem(this.KEYS.SOUND_ENABLED, enabled.toString());
   },
 
+  isBgmEnabled() {
+    const val = localStorage.getItem('ss_bgm_enabled');
+    return val === null ? true : val === 'true';
+  },
+
+  setBgmEnabled(enabled) {
+    localStorage.setItem('ss_bgm_enabled', enabled.toString());
+  },
+
+  isSfxEnabled() {
+    const val = localStorage.getItem('ss_sfx_enabled');
+    return val === null ? true : val === 'true';
+  },
+
+  setSfxEnabled(enabled) {
+    localStorage.setItem('ss_sfx_enabled', enabled.toString());
+  },
+
   getUpgradeLevel(type) {
     const key = this.KEYS['UPGRADE_' + type.toUpperCase()];
     return parseInt(localStorage.getItem(key) || '1', 10);
@@ -2445,11 +2877,12 @@ const Storage = {
 
   getSelectedSkin() {
     let skin = localStorage.getItem(this.KEYS.SELECTED_SKIN) || 'saurabh';
-    if (skin === 'default') skin = 'saurabh';
+    if (skin === 'default' || skin === 'muskaan') skin = 'saurabh';
     return skin;
   },
 
   setSelectedSkin(skinId) {
+    if (skinId === 'muskaan') skinId = 'saurabh';
     localStorage.setItem(this.KEYS.SELECTED_SKIN, skinId);
   },
 
@@ -2457,6 +2890,7 @@ const Storage = {
     try {
       const raw = localStorage.getItem(this.KEYS.UNLOCKED_SKINS);
       let list = raw ? JSON.parse(raw) : ['saurabh'];
+      list = list.filter(s => s !== 'muskaan');
       if (!list.includes('saurabh')) list.push('saurabh');
       return list;
     } catch (e) {
@@ -2516,349 +2950,500 @@ const Storage = {
 /**
  * Saurabh's Sprint - Web Audio Synthesizer Engine
  * Generates dynamic sound effects and background music without external audio files
+ * 100% Offline Compatible - Pure algorithmic sound synthesis (0 network requests)
+ * Fully compliant with modern browser autoplay & AudioContext policies
  */
 
 class SoundEngine {
   constructor() {
     this.ctx = null;
+    this.masterGain = null;
+    this.sfxGain = null;
+    this.bgmGain = null;
+
     this.enabled = Storage.isSoundEnabled();
+    this.bgmEnabled = Storage.isBgmEnabled();
+    this.sfxEnabled = Storage.isSfxEnabled();
+
     this.bgmPlaying = false;
     this.bgmInterval = null;
     this.coinPitchIndex = 0;
     this.lastCoinTime = 0;
+
+    // Attach passive global user gesture listeners to unlock AudioContext immediately on touch/click
+    this.setupAutoUnlock();
+  }
+
+  setupAutoUnlock() {
+    const unlock = () => {
+      this.init();
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
+    };
+
+    ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, unlock, { passive: true, once: false });
+    });
   }
 
   init() {
-    if (!this.ctx) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      this.ctx = new AudioContext();
-    }
-    if (this.ctx.state === 'suspended') {
-      this.ctx.resume();
+    try {
+      if (!this.ctx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          this.ctx = new AudioContextClass();
+          
+          this.masterGain = this.ctx.createGain();
+          this.masterGain.gain.setValueAtTime(this.enabled ? 1.0 : 0.0, this.ctx.currentTime);
+          this.masterGain.connect(this.ctx.destination);
+
+          this.sfxGain = this.ctx.createGain();
+          this.sfxGain.gain.setValueAtTime(this.sfxEnabled ? 1.0 : 0.0, this.ctx.currentTime);
+          this.sfxGain.connect(this.masterGain);
+
+          this.bgmGain = this.ctx.createGain();
+          this.bgmGain.gain.setValueAtTime(this.bgmEnabled ? 1.0 : 0.0, this.ctx.currentTime);
+          this.bgmGain.connect(this.masterGain);
+        }
+      }
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume().catch(() => {});
+      }
+    } catch (e) {
+      console.warn('AudioContext initialization note:', e);
     }
   }
 
+  getSfxDestination() {
+    if (this.sfxGain) return this.sfxGain;
+    if (this.masterGain) return this.masterGain;
+    if (this.ctx) return this.ctx.destination;
+    return null;
+  }
+
+  getBgmDestination() {
+    if (this.bgmGain) return this.bgmGain;
+    if (this.masterGain) return this.masterGain;
+    if (this.ctx) return this.ctx.destination;
+    return null;
+  }
+
+  // Master Sound Toggle
   toggleSound() {
     this.enabled = !this.enabled;
     Storage.setSoundEnabled(this.enabled);
+    
+    this.init();
+    if (this.masterGain && this.ctx) {
+      this.masterGain.gain.setValueAtTime(this.enabled ? 1.0 : 0.0, this.ctx.currentTime);
+    }
+
     if (!this.enabled) {
       this.stopBGM();
     } else {
+      if (this.bgmEnabled) this.startBGM();
+    }
+    return this.enabled;
+  }
+
+  setSoundEnabled(val) {
+    this.enabled = Boolean(val);
+    Storage.setSoundEnabled(this.enabled);
+    this.init();
+    if (this.masterGain && this.ctx) {
+      this.masterGain.gain.setValueAtTime(this.enabled ? 1.0 : 0.0, this.ctx.currentTime);
+    }
+    if (!this.enabled) {
+      this.stopBGM();
+    } else if (this.bgmEnabled) {
       this.startBGM();
     }
     return this.enabled;
   }
 
-  playJump() {
-    if (!this.enabled) return;
+  // BGM Toggle
+  toggleBGM() {
+    this.bgmEnabled = !this.bgmEnabled;
+    Storage.setBgmEnabled(this.bgmEnabled);
     this.init();
-
-    const now = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(160, now);
-    osc.frequency.exponentialRampToValueAtTime(480, now + 0.18);
-
-    gain.gain.setValueAtTime(0.3, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
-
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.2);
-  }
-
-  playSlide() {
-    if (!this.enabled) return;
-    this.init();
-
-    const now = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(320, now);
-    osc.frequency.exponentialRampToValueAtTime(100, now + 0.25);
-
-    gain.gain.setValueAtTime(0.35, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
-
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.25);
-  }
-
-  playCoin() {
-    if (!this.enabled) return;
-    this.init();
-
-    const now = this.ctx.currentTime;
-    // Rising scale if coins collected quickly
-    if (now - this.lastCoinTime < 0.35) {
-      this.coinPitchIndex = (this.coinPitchIndex + 1) % 5;
-    } else {
-      this.coinPitchIndex = 0;
+    if (this.bgmGain && this.ctx) {
+      this.bgmGain.gain.setValueAtTime(this.bgmEnabled ? 1.0 : 0.0, this.ctx.currentTime);
     }
-    this.lastCoinTime = now;
-
-    const basePitches = [987.77, 1174.66, 1318.51, 1567.98, 1760.00]; // B5, D6, E6, G6, A6
-    const freq = basePitches[this.coinPitchIndex];
-
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(freq, now);
-    osc.frequency.setValueAtTime(freq * 1.5, now + 0.05);
-
-    gain.gain.setValueAtTime(0.25, now);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.18);
+    if (!this.bgmEnabled) {
+      this.stopBGM();
+    } else if (this.enabled) {
+      this.startBGM();
+    }
+    return this.bgmEnabled;
   }
 
-  playPowerUp() {
-    if (!this.enabled) return;
+  // SFX Toggle
+  toggleSFX() {
+    this.sfxEnabled = !this.sfxEnabled;
+    Storage.setSfxEnabled(this.sfxEnabled);
     this.init();
+    if (this.sfxGain && this.ctx) {
+      this.sfxGain.gain.setValueAtTime(this.sfxEnabled ? 1.0 : 0.0, this.ctx.currentTime);
+    }
+    return this.sfxEnabled;
+  }
 
-    const now = this.ctx.currentTime;
-    const chords = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+  playJump() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
 
-    chords.forEach((freq, idx) => {
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+      osc.frequency.setValueAtTime(160, now);
+      osc.frequency.exponentialRampToValueAtTime(480, now + 0.18);
 
-      gain.gain.setValueAtTime(0.2, now + idx * 0.06);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.25);
+      gain.gain.setValueAtTime(0.3, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
 
       osc.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(dest);
 
-      osc.start(now + idx * 0.06);
-      osc.stop(now + idx * 0.06 + 0.25);
-    });
+      osc.start(now);
+      osc.stop(now + 0.2);
+    } catch (e) {}
   }
 
-  playHoverboard() {
-    if (!this.enabled) return;
+  playSlide() {
+    if (!this.enabled || !this.sfxEnabled) return;
     this.init();
+    if (!this.ctx) return;
 
-    const now = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(200, now);
-    osc.frequency.exponentialRampToValueAtTime(800, now + 0.3);
-
-    gain.gain.setValueAtTime(0.2, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
-
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.35);
-  }
-
-  playCrash() {
-    if (!this.enabled) return;
-    this.init();
-
-    const now = this.ctx.currentTime;
-    // White noise explosion + low thump
-    const bufferSize = this.ctx.sampleRate * 0.35;
-    const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (this.ctx.sampleRate * 0.08));
-    }
-
-    const noise = this.ctx.createBufferSource();
-    noise.buffer = buffer;
-
-    const noiseGain = this.ctx.createGain();
-    noiseGain.gain.setValueAtTime(0.4, now);
-    noiseGain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
-
-    noise.connect(noiseGain);
-    noiseGain.connect(this.ctx.destination);
-
-    // Deep sub bass
-    const subOsc = this.ctx.createOscillator();
-    const subGain = this.ctx.createGain();
-    subOsc.type = 'sine';
-    subOsc.frequency.setValueAtTime(120, now);
-    subOsc.frequency.exponentialRampToValueAtTime(30, now + 0.4);
-
-    subGain.gain.setValueAtTime(0.5, now);
-    subGain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
-
-    subOsc.connect(subGain);
-    subGain.connect(this.ctx.destination);
-
-    noise.start(now);
-    subOsc.start(now);
-    subOsc.stop(now + 0.4);
-  }
-
-  playButtonClick() {
-    if (!this.enabled) return;
-    this.init();
-
-    const now = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(600, now);
-    osc.frequency.exponentialRampToValueAtTime(300, now + 0.08);
-
-    gain.gain.setValueAtTime(0.2, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
-
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.08);
-  }
-
-  playWhoosh() {
-    if (!this.enabled) return;
-    this.init();
-
-    const now = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(280, now);
-    osc.frequency.exponentialRampToValueAtTime(140, now + 0.12);
-
-    gain.gain.setValueAtTime(0.2, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
-
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.12);
-  }
-
-  playReward() {
-    if (!this.enabled) return;
-    this.init();
-
-    const now = this.ctx.currentTime;
-    const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
-
-    notes.forEach((freq, idx) => {
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
 
       osc.type = 'triangle';
-      osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+      osc.frequency.setValueAtTime(320, now);
+      osc.frequency.exponentialRampToValueAtTime(100, now + 0.25);
 
-      gain.gain.setValueAtTime(0.22, now + idx * 0.07);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.3);
+      gain.gain.setValueAtTime(0.35, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
 
       osc.connect(gain);
-      gain.connect(this.ctx.destination);
+      gain.connect(dest);
 
-      osc.start(now + idx * 0.07);
-      osc.stop(now + idx * 0.07 + 0.3);
-    });
+      osc.start(now);
+      osc.stop(now + 0.25);
+    } catch (e) {}
   }
 
-  playRevive() {
-    if (!this.enabled) return;
+  playCoin() {
+    if (!this.enabled || !this.sfxEnabled) return;
     this.init();
+    if (!this.ctx) return;
 
-    const now = this.ctx.currentTime;
-    const osc = this.ctx.createOscillator();
-    const gain = this.ctx.createGain();
-
-    osc.type = 'sawtooth';
-    osc.frequency.setValueAtTime(150, now);
-    osc.frequency.exponentialRampToValueAtTime(900, now + 0.45);
-
-    gain.gain.setValueAtTime(0.28, now);
-    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
-
-    osc.connect(gain);
-    gain.connect(this.ctx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.5);
-  }
-
-  /* Procedural Synthwave BGM Loop */
-  startBGM() {
-    if (!this.enabled || this.bgmPlaying) return;
-    this.init();
-    this.bgmPlaying = true;
-
-    const bassNotes = [110, 110, 130.81, 146.83, 164.81, 146.83, 130.81, 98]; // A2, C3, D3, E3, D3, C3, G2
-    let step = 0;
-
-    const tempoMs = 220; // Fast sprint bpm
-
-    this.bgmInterval = setInterval(() => {
-      if (!this.enabled || !this.bgmPlaying) return;
-
+    try {
+      const dest = this.getSfxDestination();
       const now = this.ctx.currentTime;
-      const freq = bassNotes[step % bassNotes.length];
+      if (now - this.lastCoinTime < 0.35) {
+        this.coinPitchIndex = (this.coinPitchIndex + 1) % 5;
+      } else {
+        this.coinPitchIndex = 0;
+      }
+      this.lastCoinTime = now;
 
-      // Bass synth
+      const basePitches = [987.77, 1174.66, 1318.51, 1567.98, 1760.00]; // B5, D6, E6, G6, A6
+      const freq = basePitches[this.coinPitchIndex];
+
       const osc = this.ctx.createOscillator();
       const gain = this.ctx.createGain();
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(freq, now);
 
-      gain.gain.setValueAtTime(0.06, now);
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now);
+      osc.frequency.setValueAtTime(freq * 1.5, now + 0.05);
+
+      gain.gain.setValueAtTime(0.25, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
 
-      // Simple lowpass filter
-      const filter = this.ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(450, now);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(this.ctx.destination);
+      osc.connect(gain);
+      gain.connect(dest);
 
       osc.start(now);
       osc.stop(now + 0.18);
+    } catch (e) {}
+  }
 
-      // Hi-hat / snare pulse every 2 steps
-      if (step % 2 === 1) {
-        const hhOsc = this.ctx.createOscillator();
-        const hhGain = this.ctx.createGain();
-        hhOsc.type = 'sine';
-        hhOsc.frequency.setValueAtTime(2200, now);
-        hhGain.gain.setValueAtTime(0.03, now);
-        hhGain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+  playPowerUp() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
 
-        hhOsc.connect(hhGain);
-        hhGain.connect(this.ctx.destination);
-        hhOsc.start(now);
-        hhOsc.stop(now + 0.05);
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
+      const chords = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+
+      chords.forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+
+        gain.gain.setValueAtTime(0.2, now + idx * 0.06);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.25);
+
+        osc.connect(gain);
+        gain.connect(dest);
+
+        osc.start(now + idx * 0.06);
+        osc.stop(now + idx * 0.06 + 0.25);
+      });
+    } catch (e) {}
+  }
+
+  playHoverboard() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(200, now);
+      osc.frequency.exponentialRampToValueAtTime(800, now + 0.3);
+
+      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+
+      osc.connect(gain);
+      gain.connect(dest);
+
+      osc.start(now);
+      osc.stop(now + 0.35);
+    } catch (e) {}
+  }
+
+  playCrash() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
+      const bufferSize = Math.max(1, Math.floor(this.ctx.sampleRate * 0.35));
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (this.ctx.sampleRate * 0.08));
       }
 
-      step++;
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.4, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+
+      noise.connect(noiseGain);
+      noiseGain.connect(dest);
+
+      // Deep sub bass
+      const subOsc = this.ctx.createOscillator();
+      const subGain = this.ctx.createGain();
+      subOsc.type = 'sine';
+      subOsc.frequency.setValueAtTime(120, now);
+      subOsc.frequency.exponentialRampToValueAtTime(30, now + 0.4);
+
+      subGain.gain.setValueAtTime(0.5, now);
+      subGain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+
+      subOsc.connect(subGain);
+      subGain.connect(dest);
+
+      noise.start(now);
+      subOsc.start(now);
+      subOsc.stop(now + 0.4);
+    } catch (e) {}
+  }
+
+  playButtonClick() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.08);
+
+      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.08);
+
+      osc.connect(gain);
+      gain.connect(dest);
+
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } catch (e) {}
+  }
+
+  playWhoosh() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(280, now);
+      osc.frequency.exponentialRampToValueAtTime(140, now + 0.12);
+
+      gain.gain.setValueAtTime(0.2, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+
+      osc.connect(gain);
+      gain.connect(dest);
+
+      osc.start(now);
+      osc.stop(now + 0.12);
+    } catch (e) {}
+  }
+
+  playReward() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
+      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
+
+      notes.forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.07);
+
+        gain.gain.setValueAtTime(0.22, now + idx * 0.07);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.3);
+
+        osc.connect(gain);
+        gain.connect(dest);
+
+        osc.start(now + idx * 0.07);
+        osc.stop(now + idx * 0.07 + 0.3);
+      });
+    } catch (e) {}
+  }
+
+  playRevive() {
+    if (!this.enabled || !this.sfxEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    try {
+      const dest = this.getSfxDestination();
+      const now = this.ctx.currentTime;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(150, now);
+      osc.frequency.exponentialRampToValueAtTime(900, now + 0.45);
+
+      gain.gain.setValueAtTime(0.28, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+
+      osc.connect(gain);
+      gain.connect(dest);
+
+      osc.start(now);
+      osc.stop(now + 0.5);
+    } catch (e) {}
+  }
+
+  /* Procedural Synthwave BGM Loop (100% Offline Algorithmic Synthesis) */
+  startBGM() {
+    if (!this.enabled || !this.bgmEnabled || this.bgmPlaying) return;
+    this.init();
+    this.stopBGM(); // Ensure no stale intervals
+
+    this.bgmPlaying = true;
+    const bassNotes = [110, 110, 130.81, 146.83, 164.81, 146.83, 130.81, 98]; // A2, C3, D3, E3, D3, C3, G2
+    let step = 0;
+    const tempoMs = 220; // Fast sprint bpm
+
+    this.bgmInterval = setInterval(() => {
+      if (!this.enabled || !this.bgmEnabled || !this.bgmPlaying || !this.ctx) return;
+
+      try {
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume().catch(() => {});
+        }
+
+        const dest = this.getBgmDestination();
+        const now = this.ctx.currentTime;
+        const freq = bassNotes[step % bassNotes.length];
+
+        // Bass synth
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, now);
+
+        gain.gain.setValueAtTime(0.06, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+
+        // Simple lowpass filter
+        const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(450, now);
+
+        osc.connect(filter);
+        filter.connect(gain);
+        gain.connect(dest);
+
+        osc.start(now);
+        osc.stop(now + 0.18);
+
+        // Hi-hat pulse every 2 steps
+        if (step % 2 === 1) {
+          const hhOsc = this.ctx.createOscillator();
+          const hhGain = this.ctx.createGain();
+          hhOsc.type = 'sine';
+          hhOsc.frequency.setValueAtTime(2200, now);
+          hhGain.gain.setValueAtTime(0.03, now);
+          hhGain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+
+          hhOsc.connect(hhGain);
+          hhGain.connect(dest);
+          hhOsc.start(now);
+          hhOsc.stop(now + 0.05);
+        }
+
+        step++;
+      } catch (e) {}
     }, tempoMs);
   }
 
@@ -3255,7 +3840,7 @@ class Player {
         id: 'rishav',
         name: 'Rishav (Striker)',
         gender: 'male',
-        cost: 400,
+        cost: 250,
         hairStyle: 'cap',
         hoodie: 0xffd32a,
         pants: 0x111827,
@@ -3266,26 +3851,11 @@ class Player {
         accent: 0xffa502,
         avatar: 'R'
       },
-      jaishika: {
-        id: 'jaishika',
-        name: 'Jaishika (Superstar)',
-        gender: 'female',
-        cost: 500,
-        hairStyle: 'ponytail',
-        hoodie: 0xff4081,
-        pants: 0x3f51b5,
-        shoes: 0xff79b0,
-        board: 0xff4081,
-        hair: 0x3e2723,
-        ribbon: 0x00e5ff,
-        accent: 0xff4081,
-        avatar: 'J'
-      },
       kashish: {
         id: 'kashish',
         name: 'Kashish (Phantom)',
         gender: 'male',
-        cost: 600,
+        cost: 450,
         hairStyle: 'cap',
         hoodie: 0x8e44ad,
         pants: 0x1e272e,
@@ -3296,56 +3866,26 @@ class Player {
         accent: 0xa29bfe,
         avatar: 'K'
       },
-      bhoomi: {
-        id: 'bhoomi',
-        name: 'Bhoomi (Emerald)',
+      jaishika: {
+        id: 'jaishika',
+        name: 'Jaishika (Superstar)',
         gender: 'female',
-        cost: 700,
-        hairStyle: 'side_braid',
-        hoodie: 0x00b894,
-        pants: 0x2d3436,
-        shoes: 0x55efc4,
-        board: 0x00b894,
-        hair: 0x4a2810,
-        ribbon: 0xfdcb6e,
-        accent: 0x00b894,
-        avatar: 'B'
-      },
-      muskaan: {
-        id: 'muskaan',
-        name: 'Muskaan (Blossom)',
-        gender: 'female',
-        cost: 800,
-        hairStyle: 'wavy_long',
-        hoodie: 0xff7675,
-        pants: 0x6c5ce7,
-        shoes: 0xfab1a0,
-        board: 0xff7675,
-        hair: 0x2c2c54,
-        ribbon: 0x00cec9,
-        accent: 0xff7675,
-        avatar: 'M'
-      },
-      nikhil: {
-        id: 'nikhil',
-        name: 'Nikhil (Cyber Ace)',
-        gender: 'male',
-        cost: 900,
-        hairStyle: 'cap',
-        hoodie: 0x0984e3,
-        pants: 0x2d3436,
-        shoes: 0x74b9ff,
-        board: 0x0984e3,
-        hair: 0x1e272e,
-        cap: 0x0984e3,
-        accent: 0x74b9ff,
-        avatar: 'N'
+        cost: 600,
+        hairStyle: 'ponytail',
+        hoodie: 0xff4081,
+        pants: 0x3f51b5,
+        shoes: 0xff79b0,
+        board: 0xff4081,
+        hair: 0x3e2723,
+        ribbon: 0x00e5ff,
+        accent: 0xff4081,
+        avatar: 'J'
       },
       vicky: {
         id: 'vicky',
         name: 'Vicky (Blaze)',
         gender: 'male',
-        cost: 1000,
+        cost: 750,
         hairStyle: 'cap',
         hoodie: 0xd63031,
         pants: 0x111111,
@@ -3356,11 +3896,41 @@ class Player {
         accent: 0xff7675,
         avatar: 'V'
       },
+      bhoomi: {
+        id: 'bhoomi',
+        name: 'Bhoomi (Emerald)',
+        gender: 'female',
+        cost: 850,
+        hairStyle: 'side_braid',
+        hoodie: 0x00b894,
+        pants: 0x2d3436,
+        shoes: 0x55efc4,
+        board: 0x00b894,
+        hair: 0x4a2810,
+        ribbon: 0xfdcb6e,
+        accent: 0x00b894,
+        avatar: 'B'
+      },
+      nikhil: {
+        id: 'nikhil',
+        name: 'Nikhil (Cyber Ace)',
+        gender: 'male',
+        cost: 1350,
+        hairStyle: 'cap',
+        hoodie: 0x0984e3,
+        pants: 0x2d3436,
+        shoes: 0x74b9ff,
+        board: 0x0984e3,
+        hair: 0x1e272e,
+        cap: 0x0984e3,
+        accent: 0x74b9ff,
+        avatar: 'N'
+      },
       aditya: {
         id: 'aditya',
         name: 'Aditya (Champion)',
         gender: 'male',
-        cost: 1200,
+        cost: 2000,
         hairStyle: 'cap',
         hoodie: 0x6c5ce7,
         pants: 0xffd32a,
@@ -4853,6 +5423,7 @@ class UIManager {
     this.skinsModal = document.getElementById('skins-modal');
     this.missionsModal = document.getElementById('missions-modal');
     this.helpModal = document.getElementById('help-modal');
+    this.settingsModal = document.getElementById('settings-modal');
     this.installModal = document.getElementById('install-modal');
 
     // HUD Stats
@@ -4880,8 +5451,8 @@ class UIManager {
     this.pwaBanner = document.getElementById('pwa-install-container');
     this.btnInstallPwa = document.getElementById('btn-install-pwa');
 
-    // Character Switcher State
-    this.characterKeys = ['saurabh', 'rishav', 'jaishika', 'kashish', 'bhoomi', 'muskaan', 'nikhil', 'vicky', 'aditya'];
+    // Character Switcher State (8 unique heroes)
+    this.characterKeys = ['saurabh', 'rishav', 'kashish', 'jaishika', 'vicky', 'bhoomi', 'nikhil', 'aditya'];
     const currentSkin = Storage.getSelectedSkin();
     this.currentCharIndex = Math.max(0, this.characterKeys.indexOf(currentSkin));
 
@@ -4893,13 +5464,35 @@ class UIManager {
   }
 
   initSoundUI() {
-    const enabled = Storage.isSoundEnabled();
+    const soundEnabled = Storage.isSoundEnabled();
+    const bgmEnabled = Storage.isBgmEnabled();
+    const sfxEnabled = Storage.isSfxEnabled();
+
+    // Menu sound button text
     const soundIcon = document.getElementById('sound-icon');
     const soundText = document.getElementById('sound-text');
     if (soundIcon && soundText) {
-      soundIcon.textContent = enabled ? 'ON' : 'OFF';
-      soundText.textContent = enabled ? 'SOUND ON' : 'MUTED';
+      soundIcon.textContent = soundEnabled ? 'SETTINGS' : 'MUTED';
+      soundText.textContent = soundEnabled ? 'SOUND ON' : 'MUTED';
     }
+
+    // Pause menu sound button
+    const pauseIcon = document.getElementById('pause-sound-icon');
+    const pauseText = document.getElementById('pause-sound-text');
+    if (pauseIcon && pauseText) {
+      pauseIcon.textContent = soundEnabled ? '🔊' : '🔇';
+      pauseText.textContent = soundEnabled ? 'SOUND: ON' : 'SOUND: MUTED';
+    }
+
+    // Settings switches
+    const soundToggle = document.getElementById('setting-sound-toggle');
+    if (soundToggle) soundToggle.checked = soundEnabled;
+
+    const bgmToggle = document.getElementById('setting-bgm-toggle');
+    if (bgmToggle) bgmToggle.checked = bgmEnabled;
+
+    const sfxToggle = document.getElementById('setting-sfx-toggle');
+    if (sfxToggle) sfxToggle.checked = sfxEnabled;
   }
 
   updateHomeCharacterCard() {
@@ -5068,15 +5661,56 @@ class UIManager {
       });
     }
 
-    // Sound Toggle
+    // Open Settings Modal
+    const btnOpenSettings = document.getElementById('btn-open-settings');
+    if (btnOpenSettings) {
+      btnOpenSettings.addEventListener('click', () => {
+        Audio.playButtonClick();
+        this.initSoundUI();
+        this.showModal(this.settingsModal);
+      });
+    }
+
+    // Quick Sound Toggle (if legacy button exists)
     const btnSound = document.getElementById('btn-toggle-sound');
-    const soundIcon = document.getElementById('sound-icon');
-    const soundText = document.getElementById('sound-text');
     if (btnSound) {
       btnSound.addEventListener('click', () => {
-        const enabled = Audio.toggleSound();
-        soundIcon.textContent = enabled ? '🔊' : '🔇';
-        soundText.textContent = enabled ? 'SOUND ON' : 'MUTED';
+        Audio.toggleSound();
+        this.initSoundUI();
+      });
+    }
+
+    // Pause Menu Sound Toggle Button
+    const btnPauseSound = document.getElementById('btn-pause-sound');
+    if (btnPauseSound) {
+      btnPauseSound.addEventListener('click', () => {
+        Audio.toggleSound();
+        this.initSoundUI();
+      });
+    }
+
+    // Settings Modal Switches
+    const settingSoundToggle = document.getElementById('setting-sound-toggle');
+    if (settingSoundToggle) {
+      settingSoundToggle.addEventListener('change', (e) => {
+        Audio.setSoundEnabled(e.target.checked);
+        this.initSoundUI();
+      });
+    }
+
+    const settingBgmToggle = document.getElementById('setting-bgm-toggle');
+    if (settingBgmToggle) {
+      settingBgmToggle.addEventListener('change', () => {
+        Audio.toggleBGM();
+        this.initSoundUI();
+      });
+    }
+
+    const settingSfxToggle = document.getElementById('setting-sfx-toggle');
+    if (settingSfxToggle) {
+      settingSfxToggle.addEventListener('change', () => {
+        Audio.toggleSFX();
+        this.initSoundUI();
       });
     }
 
@@ -5085,6 +5719,9 @@ class UIManager {
     document.getElementById('btn-close-skins')?.addEventListener('click', () => this.hideModal(this.skinsModal));
     document.getElementById('btn-close-missions')?.addEventListener('click', () => this.hideModal(this.missionsModal));
     document.getElementById('btn-close-help')?.addEventListener('click', () => this.hideModal(this.helpModal));
+    document.getElementById('btn-close-help-bottom')?.addEventListener('click', () => this.hideModal(this.helpModal));
+    document.getElementById('btn-close-settings')?.addEventListener('click', () => this.hideModal(this.settingsModal));
+    document.getElementById('btn-close-settings-bottom')?.addEventListener('click', () => this.hideModal(this.settingsModal));
     document.getElementById('btn-close-install')?.addEventListener('click', () => this.hideModal(this.installModal));
 
     // Install Modal Platform Tabs

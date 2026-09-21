@@ -166,11 +166,11 @@
           <span class="action-text">GET APP</span>
         </button>
         <button id="btn-open-help" class="btn-action-icon">
-          <span class="action-text-main">INFO</span>
+          <span class="action-text-main">RULES</span>
           <span class="action-text">CONTROLS</span>
         </button>
-        <button id="btn-toggle-sound" class="btn-action-icon">
-          <span id="sound-icon" class="action-text-main">AUDIO</span>
+        <button id="btn-open-settings" class="btn-action-icon">
+          <span id="sound-icon" class="action-text-main">SETTINGS</span>
           <span id="sound-text" class="action-text">SOUND ON</span>
         </button>
       </div>
@@ -238,6 +238,10 @@
         <p>Current Score: <strong id="pause-score">0</strong></p>
         <p>Coins: <strong id="pause-coins">0</strong></p>
       </div>
+      <button id="btn-pause-sound" class="btn-pause-setting">
+        <span id="pause-sound-icon">🔊</span>
+        <span id="pause-sound-text">SOUND: ON</span>
+      </button>
       <button id="btn-resume" class="btn-primary-action">RESUME SPRINT</button>
       <button id="btn-quit-to-menu" class="btn-secondary">QUIT TO MENU</button>
     </div>
@@ -346,82 +350,72 @@
         </div>
 
         <!-- 2. Rishav -->
-        <div class="skin-card" data-skin-id="rishav" data-gender="male" data-cost="400">
+        <div class="skin-card" data-skin-id="rishav" data-gender="male" data-cost="250">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #ffd32a, #ffa502);">R</div>
           <div class="skin-details">
             <h4>Rishav</h4>
-            <button class="btn-skin-action">400 C</button>
+            <button class="btn-skin-action">250 C</button>
           </div>
         </div>
 
-        <!-- 3. Jaishika -->
-        <div class="skin-card" data-skin-id="jaishika" data-gender="female" data-cost="500">
-          <span class="gender-tag gender-girl">GIRL</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #ff4081, #f48fb1);">J</div>
-          <div class="skin-details">
-            <h4>Jaishika</h4>
-            <button class="btn-skin-action">500 C</button>
-          </div>
-        </div>
-
-        <!-- 4. Kashish -->
-        <div class="skin-card" data-skin-id="kashish" data-gender="male" data-cost="600">
+        <!-- 3. Kashish -->
+        <div class="skin-card" data-skin-id="kashish" data-gender="male" data-cost="450">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">K</div>
           <div class="skin-details">
             <h4>Kashish</h4>
+            <button class="btn-skin-action">450 C</button>
+          </div>
+        </div>
+
+        <!-- 4. Jaishika -->
+        <div class="skin-card" data-skin-id="jaishika" data-gender="female" data-cost="600">
+          <span class="gender-tag gender-girl">GIRL</span>
+          <div class="skin-preview-box" style="background: linear-gradient(135deg, #ff4081, #f48fb1);">J</div>
+          <div class="skin-details">
+            <h4>Jaishika</h4>
             <button class="btn-skin-action">600 C</button>
           </div>
         </div>
 
-        <!-- 5. Bhoomi -->
-        <div class="skin-card" data-skin-id="bhoomi" data-gender="female" data-cost="700">
-          <span class="gender-tag gender-girl">GIRL</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #00b894, #55efc4);">B</div>
-          <div class="skin-details">
-            <h4>Bhoomi</h4>
-            <button class="btn-skin-action">700 C</button>
-          </div>
-        </div>
-
-        <!-- 6. Muskaan -->
-        <div class="skin-card" data-skin-id="muskaan" data-gender="female" data-cost="800">
-          <span class="gender-tag gender-girl">GIRL</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #ff7675, #fab1a0);">M</div>
-          <div class="skin-details">
-            <h4>Muskaan</h4>
-            <button class="btn-skin-action">800 C</button>
-          </div>
-        </div>
-
-        <!-- 7. Nikhil -->
-        <div class="skin-card" data-skin-id="nikhil" data-gender="male" data-cost="900">
-          <span class="gender-tag gender-boy">BOY</span>
-          <div class="skin-preview-box" style="background: linear-gradient(135deg, #0984e3, #74b9ff);">N</div>
-          <div class="skin-details">
-            <h4>Nikhil</h4>
-            <button class="btn-skin-action">900 C</button>
-          </div>
-        </div>
-
-        <!-- 8. Vicky -->
-        <div class="skin-card" data-skin-id="vicky" data-gender="male" data-cost="1000">
+        <!-- 5. Vicky -->
+        <div class="skin-card" data-skin-id="vicky" data-gender="male" data-cost="750">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #d63031, #e17055);">V</div>
           <div class="skin-details">
             <h4>Vicky</h4>
-            <button class="btn-skin-action">1000 C</button>
+            <button class="btn-skin-action">750 C</button>
           </div>
         </div>
 
-        <!-- 9. Aditya -->
-        <div class="skin-card" data-skin-id="aditya" data-gender="male" data-cost="1200">
+        <!-- 6. Bhoomi -->
+        <div class="skin-card" data-skin-id="bhoomi" data-gender="female" data-cost="850">
+          <span class="gender-tag gender-girl">GIRL</span>
+          <div class="skin-preview-box" style="background: linear-gradient(135deg, #00b894, #55efc4);">B</div>
+          <div class="skin-details">
+            <h4>Bhoomi</h4>
+            <button class="btn-skin-action">850 C</button>
+          </div>
+        </div>
+
+        <!-- 7. Nikhil -->
+        <div class="skin-card" data-skin-id="nikhil" data-gender="male" data-cost="1350">
+          <span class="gender-tag gender-boy">BOY</span>
+          <div class="skin-preview-box" style="background: linear-gradient(135deg, #0984e3, #74b9ff);">N</div>
+          <div class="skin-details">
+            <h4>Nikhil</h4>
+            <button class="btn-skin-action">1350 C</button>
+          </div>
+        </div>
+
+        <!-- 8. Aditya -->
+        <div class="skin-card" data-skin-id="aditya" data-gender="male" data-cost="2000">
           <span class="gender-tag gender-boy">BOY</span>
           <div class="skin-preview-box" style="background: linear-gradient(135deg, #6c5ce7, #ffd32a);">A</div>
           <div class="skin-details">
             <h4>Aditya</h4>
-            <button class="btn-skin-action">1200 C</button>
+            <button class="btn-skin-action">2000 C</button>
           </div>
         </div>
       </div>
@@ -462,43 +456,69 @@
     </div>
   </div>
 
-  <!-- How to Play / Controls Modal -->
+  <!-- How to Play / Controls & Rules Modal -->
   <div id="help-modal" class="modal-layer menu-hidden">
-    <div class="modal-content glass-panel">
+    <div class="modal-content help-modal-content glass-panel">
       <div class="modal-header">
-        <h2>CONTROLS & RULES</h2>
-        <button id="btn-close-help" class="btn-close-modal">&times;</button>
+        <div class="modal-title-group">
+          <h2>GAME RULES & CONTROLS</h2>
+          <span class="modal-subtitle">HOW TO PLAY & WIN</span>
+        </div>
+        <button id="btn-close-help" class="btn-close-modal" aria-label="Close Rules">&times;</button>
       </div>
-      <div class="help-guide">
-        <div class="help-section">
-          <h3>Mobile Touch Controls</h3>
-          <ul>
-            <li><strong>SWIPE LEFT / RIGHT:</strong> Switch between the 3 railway tracks</li>
-            <li><strong>SWIPE UP:</strong> Jump over roadblocks, hurdles & low barriers</li>
-            <li><strong>SWIPE DOWN:</strong> Slide under high girders & fast-fall mid-air</li>
-            <li><strong>DOUBLE TAP:</strong> Activate Hoverboard shield (Crash protection)</li>
-          </ul>
+
+      <div class="modal-body-scroll">
+        <div class="help-guide">
+          <!-- Section 1: Core Rules -->
+          <div class="help-section rules-card-highlight">
+            <h3>🎯 3 Golden Rules</h3>
+            <ul class="rules-list">
+              <li><strong>1. Dodge & Survive:</strong> Avoid oncoming metro trains, construction barriers & overhead girders. Speed increases the further you sprint!</li>
+              <li><strong>2. Collect Gold Coins:</strong> Run through coin lines to unlock awesome new characters and upgrade your power-up durations.</li>
+              <li><strong>3. Complete Missions:</strong> Finish daily challenges to earn bonus coin chests and reach top high-score ranks!</li>
+            </ul>
+          </div>
+
+          <!-- Section 2: Mobile Controls -->
+          <div class="help-section">
+            <h3>📱 Mobile Touch Gestures</h3>
+            <ul>
+              <li><strong>SWIPE LEFT / RIGHT:</strong> Switch between the 3 railway tracks</li>
+              <li><strong>SWIPE UP:</strong> Jump over hurdles, barriers & roadblocks</li>
+              <li><strong>SWIPE DOWN:</strong> Slide under high warning signs & rapid drop</li>
+              <li><strong>DOUBLE TAP:</strong> Deploy Hoverboard Shield (Protects against 1 crash!)</li>
+            </ul>
+          </div>
+
+          <!-- Section 3: Desktop Controls -->
+          <div class="help-section">
+            <h3>⌨️ Desktop Keyboard</h3>
+            <ul>
+              <li><strong>Left / Right / A / D:</strong> Switch Track</li>
+              <li><strong>Up / W:</strong> Jump</li>
+              <li><strong>Down / S:</strong> Slide & Fast-Fall</li>
+              <li><strong>Space / B / E / H:</strong> Activate Hoverboard</li>
+              <li><strong>P / Esc:</strong> Pause & Resume</li>
+            </ul>
+          </div>
+
+          <!-- Section 4: Power-Ups -->
+          <div class="help-section">
+            <h3>⚡ Super Power-Ups</h3>
+            <ul>
+              <li><strong>🧲 Coin Magnet:</strong> Pulls all nearby track coins into your bank automatically.</li>
+              <li><strong>✖️ 2X Multiplier:</strong> Doubles your score rate while active.</li>
+              <li><strong>🛹 Hoverboard:</strong> Grants an emergency energy shield that saves you from 1 crash.</li>
+              <li><strong>🚀 Jetpack:</strong> Rockets high into the open sky for risk-free coin collection.</li>
+            </ul>
+          </div>
         </div>
-        <div class="help-section">
-          <h3>Desktop Keyboard Controls</h3>
-          <ul>
-            <li><strong>Arrow Left / A:</strong> Move Left</li>
-            <li><strong>Arrow Right / D:</strong> Move Right</li>
-            <li><strong>Arrow Up / W:</strong> Jump</li>
-            <li><strong>Arrow Down / S:</strong> Slide & Duck</li>
-            <li><strong>Space / B / E / H:</strong> Activate Hoverboard Shield</li>
-            <li><strong>P / Esc:</strong> Pause & Resume Game</li>
-          </ul>
-        </div>
-        <div class="help-section">
-          <h3>Power-Ups</h3>
-          <ul>
-            <li><strong>Coin Magnet:</strong> Attracts all coins into your bank</li>
-            <li><strong>2X Multiplier:</strong> Doubles your score rate</li>
-            <li><strong>Hoverboard:</strong> Protects from 1 fatal crash</li>
-            <li><strong>Jetpack:</strong> Soar high above obstacles with free sky coins</li>
-          </ul>
-        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-close-help-bottom" class="btn-primary-action btn-modal-action">
+          <span class="btn-text">GOT IT, LET'S PLAY!</span>
+        </button>
       </div>
     </div>
   </div>
@@ -614,6 +634,87 @@
       </div>
     </div>
   </div>
+
+  <!-- Settings & Audio Controls Modal -->
+  <div id="settings-modal" class="modal-layer menu-hidden">
+    <div class="modal-content settings-modal-content glass-panel">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2>GAME SETTINGS</h2>
+          <span class="modal-subtitle">AUDIO & CONTROLS</span>
+        </div>
+        <button id="btn-close-settings" class="btn-close-modal" aria-label="Close Settings">&times;</button>
+      </div>
+
+      <div class="modal-body-scroll">
+        <div class="settings-list">
+          <!-- Sound Master Setting Row -->
+          <div class="setting-item-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge">🔊</div>
+              <div>
+                <h4>Master Sound</h4>
+                <p>Toggle all game sound effects and music</p>
+              </div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setting-sound-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- BGM Setting Row -->
+          <div class="setting-item-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge">🎵</div>
+              <div>
+                <h4>Synthwave BGM</h4>
+                <p>Procedural upbeat arcade background music</p>
+              </div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setting-bgm-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- SFX Setting Row -->
+          <div class="setting-item-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge">💥</div>
+              <div>
+                <h4>Sound Effects (SFX)</h4>
+                <p>Jumps, slides, coin chimes & power-ups</p>
+              </div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="setting-sfx-toggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- Offline Mode Guarantee Badge -->
+          <div class="setting-item-card offline-status-card">
+            <div class="setting-info">
+              <div class="setting-icon-badge badge-green">📶</div>
+              <div>
+                <h4>100% Offline Mode</h4>
+                <p>Zero internet required. Audio is synthesized live on your device!</p>
+              </div>
+            </div>
+            <span class="status-pill-active">READY ✔</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-close-settings-bottom" class="btn-primary-action btn-modal-action">
+          <span class="btn-text">SAVE & CLOSE</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/storage.js"></script>
   <script src="js/audio.js"></script>
   <script src="js/missions.js"></script>
