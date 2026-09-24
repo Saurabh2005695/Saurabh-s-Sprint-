@@ -11,6 +11,7 @@ const jsFiles = [
   'missions.js',
   'input.js',
   'player.js',
+  'chaser.js',
   'collectibles.js',
   'world.js',
   'ui.js',
@@ -27,20 +28,20 @@ let standaloneHtml = htmlContent;
 
 // Replace stylesheet link with inline style
 standaloneHtml = standaloneHtml.replace(
-  '<link rel="stylesheet" href="css/style.css">',
+  /<link rel="stylesheet" href="css\/style\.css[^"]*">/i,
   `<style>\n${cssContent}\n</style>`
 );
 
 // Replace external Three.js script with inline Three.js
 standaloneHtml = standaloneHtml.replace(
-  '<script src="lib/three.min.js"></script>',
+  /<script src="lib\/three\.min\.js"><\/script>/i,
   `<script>\n${threeJs}\n</script>`
 );
 
 // Remove individual modular script tags
 jsFiles.forEach(file => {
   standaloneHtml = standaloneHtml.replace(
-    new RegExp(`<script src="js/${file}"><\\/script>\\s*`, 'g'),
+    new RegExp(`<script src="js\\/${file}(\\?[^"]*)?"><\\/script>\\s*`, 'gi'),
     ''
   );
 });

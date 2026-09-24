@@ -8,7 +8,7 @@ echo Starting game server and opening in your default browser...
 echo (Aap iss window ko minimize kar sakte hain)
 echo.
 
-start "" http://localhost:3000/
+start "" http://localhost:3001/
 node server.js
 
 pause

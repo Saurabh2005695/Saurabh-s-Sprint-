@@ -27,8 +27,8 @@ class InputManager {
     window.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: false });
     window.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: false });
     window.addEventListener('touchmove', (e) => {
-      // Prevent browser pull-to-refresh & scrolling
-      if (e.target.closest('.modal-content') === null) {
+      // Prevent browser pull-to-refresh & scrolling unless touching scrollable modal or UI panels
+      if (e.target.closest('.modal-content, .pause-panel, .menu-glass-panel, .start-bottom-bar') === null) {
         e.preventDefault();
       }
     }, { passive: false });
@@ -39,6 +39,11 @@ class InputManager {
 
   handleTouchStart(e) {
     if (e.touches.length > 0) {
+      // If tapping interactive UI buttons / pause panel, don't hijack swipe or double-tap
+      if (e.target.closest('button, .btn, .hud-btn-circle, #btn-pause, #pause-screen, .pause-panel, .modal, .menu-actions-grid, .home-character-widget')) {
+        return;
+      }
+
       this.startX = e.touches[0].clientX;
       this.startY = e.touches[0].clientY;
       this.startTime = Date.now();
@@ -148,4 +153,14 @@ class InputManager {
       }
     }
   }
+}
+
+if (typeof window !== 'undefined') {
+  window.InputManager = InputManager;
+}
+if (typeof globalThis !== 'undefined') {
+  globalThis.InputManager = InputManager;
+}
+if (typeof global !== 'undefined') {
+  global.InputManager = InputManager;
 }
