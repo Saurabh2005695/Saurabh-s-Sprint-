@@ -66,32 +66,32 @@ Play now in your browser:
 
 | # | Character | Style | Gender | Unlock |
 | :- | :--- | :--- | :--- | :--- |
-| 1 | **Cyber Dash** | Tech Runner | Male | Default |
-| 2 | **Saurabh** | Leader | Male | Free |
-| 3 | **Rishav** | Striker | Male | 250 Coins |
-| 4 | **Kashish** | Phantom | Male | 450 Coins |
-| 5 | **Jaishika** | Superstar | Female | 600 Coins |
-| 6 | **Vicky** | Blaze | Male | 750 Coins |
-| 7 | **Bhoomi** | Emerald | Female | 850 Coins |
-| 8 | **Nikhil** | Cyber Ace | Male | 1,350 Coins |
-| 9 | **Aditya** | Champion | Male | 2,000 Coins |
-| 10 | **Priya** | Speed Queen | Female | 1,100 Coins |
-| 11 | **Arjun** | Shadow | Male | 1,600 Coins |
-| 12 | **Meera** | Flame | Female | 2,200 Coins |
-| 13 | **Rahul** | Thunder | Male | 2,800 Coins |
-| 14 | **Ananya** | Neon | Female | 3,200 Coins |
-| 15 | **Vikram** | Storm | Male | 3,800 Coins |
-| 16 | **Diya** | Aurora | Female | 4,200 Coins |
-| 17 | **Rohan** | Inferno | Male | 4,800 Coins |
-| 18 | **Ishaan** | Void | Male | 5,500 Coins |
-| 19 | **Kavya** | Crystal | Female | 6,000 Coins |
-| 20 | **Kunal** | Electric | Male | 6,800 Coins |
-| 21 | **Simran** | Prism | Female | 7,500 Coins |
-| 22 | **Dev** | Galaxy | Male | 8,500 Coins |
-| 23 | **Tara** | Celestial | Female | 9,500 Coins |
-| 24 | **Arnav** | Titan | Male | 11,000 Coins |
-| 25 | **Riya** | Nova | Female | 13,000 Coins |
-| 26 | **Aarav** | Legend | Male | 15,000 Coins |
+| 1 | **Cyber Dash** | Neon Speedster | Male | Default |
+| 2 | **Shadow Blade** | Stealth Shinobi | Male | 250 Coins |
+| 3 | **Neon Phoenix** | Flame Runner | Male | 500 Coins |
+| 4 | **Valkyrie Gold** | Cyber Warrior | Female | 750 Coins |
+| 5 | **Void Walker** | Phantom Spectre | Male | 1,000 Coins |
+| 6 | **Blaze Apex** | Crimson Striker | Male | 1,500 Coins |
+| 7 | **Turbo Bolt** | Thunder Sprinter | Male | 2,000 Coins |
+| 8 | **Luna Spectra** | Moonlight Runner | Female | 2,500 Coins |
+| 9 | **Titan Smash** | Heavy Juggernaut | Male | 3,000 Coins |
+| 10 | **Spectre X** | Ghost Infiltrator | Male | 3,800 Coins |
+| 11 | **Frost Bite** | Glacial Ranger | Female | 4,500 Coins |
+| 12 | **Pulse Raider** | Synthwave Ace | Male | 5,500 Coins |
+| 13 | **Viper Strike** | Venom Assassin | Male | 6,500 Coins |
+| 14 | **Axel Prime** | Cyborg Commando | Male | 7,800 Coins |
+| 15 | **Nova Star** | Cosmic Diva | Female | 9,000 Coins |
+| 16 | **Zenith Zero** | Abyssal Overlord | Male | 10,500 Coins |
+| 17 | **Vector Neo** | Matrix Hacker | Male | 12,000 Coins |
+| 18 | **Chrono Drift** | Time Traveler | Male | 13,500 Coins |
+| 19 | **Eclipse Hunter** | Blood Moon Sniper | Female | 15,000 Coins |
+| 20 | **Vortex Master** | Hydro Sorcerer | Male | 16,500 Coins |
+| 21 | **Sakura Blade** | Cherry Blossom Samurai | Female | 18,000 Coins |
+| 22 | **Ghost Protocol** | Chrome Spectre | Male | 20,000 Coins |
+| 23 | **Omega Strike** | Apex Mecha Soldier | Male | 22,000 Coins |
+| 24 | **Hyperion King** | Golden Legend | Male | 25,000 Coins |
+| 25 | **Cyberpunk Saurabh** | Sprint Supreme Legend | Male | 30,000 Coins |
+| 26 | **Matrix Nyx** | Cyber Assassin Queen | Female | 35,000 Coins |
 
 ---
 
